@@ -1,0 +1,35 @@
+###
+# 등록된 포스트 글의 목록을 가져옴
+# QUERY STRING
+# - page {number}: 페이지, 기본값 1
+# - limit {number}: 한 페이지에 보일 문서의 수
+# - q {string}: 검색 쿼리, 형식은 <검색할 필드 목록>=<키워드>
+#   * <검색할 필드 목록>: 필드의 목록을 공백없이 콤마(,)로 구분하여 나열, 가능한 필드: title
+GET http://localhost:8000/users?limit=10&page=1
+
+###
+# PARAMS: /v1/posts/<id>
+# - <id> {string}: 문서의 아이디(_id)
+GET http://localhost:8000/users/601d5e514755d45e7b46901f
+
+
+###
+#
+POST http://localhost:8000/users
+Content-Type: application/json;charset=UTF-8
+
+{
+  "userId": "TEST1",
+  "userPassword": "Test1 Password"
+}
+
+###
+PUT http://localhost:8000/users/601d671204d59961de88ad
+Content-Type: application/json;charset=UTF-8
+
+{
+  "userPassword": "hello"
+}
+
+###
+DELETE http://localhost:8000/users/601d5e8c4755d45e7b469020
