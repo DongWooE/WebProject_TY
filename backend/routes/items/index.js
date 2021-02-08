@@ -4,6 +4,10 @@ const router = Router();
 const mongoose = require('mongoose');
 
 
+
+
+
+
 router.route('/')
 .get(async(req,res,next)=>{     //모든 상품 정보들을 리턴함
     try{
