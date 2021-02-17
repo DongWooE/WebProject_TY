@@ -47,15 +47,21 @@ function updateUser(req, res, next) {
   const { body } = req;
   const { id } = req.params;
   User.findById(id, function(err, user) {
-    if (err) res.json('해당하는 ID를 찾을 수 없습니다.');
+    if (err) {
+      res.json('해당하는 ID를 찾을 수 없습니다.');
+      return;
+    }  
     if(body.userId) {
       user.userId = body.userId;
     }
     if(body.userPassword) {
       user.userPassword = body.userPassword;
     }
-    user.save(function(err, user) {
-      if (err) res.json('유저를 수정하는 데 실패하였습니다.');
+    user.save(function(errs) {
+      if (errs) {
+        res.json('유저를 수정하는 데 실패하였습니다.');
+        return;
+      }
       res.json(user);
     });
   });
@@ -65,13 +71,21 @@ function removeUser(req, res, next) {
   const { id } = req.params;
   
   User.findById(id, function(err, user) {
-    if (err) 
+    if (err) {
       res.json('해당하는 ID를 찾을 수 없습니다.');
-    else {
-      user.remove(function(err) {
-        if (err) res.json('유저를 삭제하는 데 실패하였습니다.');
+      return;
+    }
+    if (user) {
+    user.remove(function(errs) {
+        if (errs) {
+          res.json('유저를 삭제하는 데 실패하였습니다.');
+          return;  
+        }
         res.json('유저를 삭제하였습니다.');
       });
+    }
+    else {
+      res.json('error')
     }
   });
 }

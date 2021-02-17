@@ -19,17 +19,17 @@ POST http://localhost:8000/users
 Content-Type: application/json;charset=UTF-8
 
 {
-  "userId": "TEST1",
-  "userPassword": "Test1 Password"
+  "userId": "박성진",
+  "userPassword": "박성진 Password"
 }
 
 ###
-PUT http://localhost:8000/users/601d671204d59961de88ad
+PUT http://localhost:8000/users/601d66f404d59961de88ae0b
 Content-Type: application/json;charset=UTF-8
 
 {
-  "userPassword": "hello"
+  "userPassword": "he"
 }
 
 ###
-DELETE http://localhost:8000/users/601d5e8c4755d45e7b469020
+DELETE http://localhost:8000/users/601e46cab38f8e6ceb6761ab
